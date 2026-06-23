@@ -1,0 +1,22 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "mcq_sets",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "category_id", "order": "ASCENDING" },
+        { "fieldPath": "created_at", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "mcqs",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "set_id", "order": "ASCENDING" },
+        { "fieldPath": "position", "order": "ASCENDING" },
+        { "fieldPath": "created_at", "order": "ASCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}
