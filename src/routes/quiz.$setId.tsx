@@ -103,7 +103,7 @@ function QuizPage() {
         <Link
           to="/category/$categoryId"
           params={{ categoryId: data.set.category_id }}
-          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary mb-4"
+          className="inline-flex items-center gap-1.5 text-base sm:text-sm text-muted-foreground hover:text-primary mb-4"
         >
           <ArrowLeft className="h-4 w-4" /> Back
         </Link>
@@ -111,19 +111,19 @@ function QuizPage() {
         <div className="rounded-3xl bg-card-grad border border-border shadow-elevated p-6 sm:p-8">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div>
-              <h1 className="text-2xl sm:text-3xl font-extrabold">{data.set.title}</h1>
+              <h1 className="text-3xl font-extrabold">{data.set.title}</h1>
               {data.set.description && (
-                <p className="text-muted-foreground mt-1 text-sm">{data.set.description}</p>
+                <p className="text-muted-foreground mt-1 text-base sm:text-sm">{data.set.description}</p>
               )}
             </div>
-            <div className="inline-flex items-center gap-2 text-sm font-semibold bg-primary/10 text-primary px-3 py-1.5 rounded-full self-start">
+            <div className="inline-flex items-center gap-2 text-base sm:text-sm font-semibold bg-primary/10 text-primary px-3 py-1.5 rounded-full self-start">
               {total} questions
             </div>
           </div>
 
           {!submitted && (
             <div className="mt-5">
-              <div className="flex items-center justify-between text-xs font-semibold mb-1.5">
+              <div className="flex items-center justify-between text-sm font-semibold mb-1.5">
                 <span className="text-muted-foreground">Answered: {answeredCount} / {total}</span>
                 <span className="text-primary">{Math.round(progress)}%</span>
               </div>
@@ -141,7 +141,7 @@ function QuizPage() {
             <div className="text-4xl sm:text-5xl font-extrabold">
               {score}<span className="opacity-70 text-2xl"> / {total}</span>
             </div>
-            <div className="mt-1 text-sm opacity-90">{pct}% — Practice complete!</div>
+            <div className="mt-1 text-base sm:text-sm opacity-90">{pct}% — Practice complete!</div>
             <div className="mt-5 flex flex-wrap gap-3 justify-center">
               <button
                 onClick={() => {
@@ -149,14 +149,14 @@ function QuizPage() {
                   setSubmitted(false);
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-background text-foreground font-semibold hover:bg-secondary transition"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-background text-foreground text-base sm:text-sm font-semibold hover:bg-secondary transition"
               >
                 <RotateCcw className="h-4 w-4" /> Try again
               </button>
               <Link
                 to="/category/$categoryId"
                 params={{ categoryId: data.set!.category_id }}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-background/20 ring-1 ring-white/30 font-semibold hover:bg-background/30 transition"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-background/20 ring-1 ring-white/30 text-base sm:text-sm font-semibold hover:bg-background/30 transition"
               >
                 Other sets
               </Link>
@@ -180,10 +180,10 @@ function QuizPage() {
                 }`}
               >
                 <div className="flex items-start gap-3">
-                  <span className="h-8 w-8 shrink-0 rounded-lg bg-primary/10 text-primary font-bold text-sm flex items-center justify-center">
+                  <span className="h-9 w-9 sm:h-8 sm:w-8 shrink-0 rounded-lg bg-primary/10 text-primary font-bold text-base sm:text-sm flex items-center justify-center">
                     {i + 1}
                   </span>
-                  <h3 className="text-base sm:text-lg font-bold leading-snug flex-1">{q.question}</h3>
+                  <h3 className="text-lg font-bold leading-snug flex-1">{q.question}</h3>
                 </div>
 
                 <div className="mt-4 grid gap-2 sm:gap-2.5">
@@ -219,7 +219,7 @@ function QuizPage() {
                         }`}
                       >
                         <span
-                          className={`h-7 w-7 shrink-0 rounded-md flex items-center justify-center font-bold text-xs ${
+                          className={`h-8 w-8 sm:h-7 sm:w-7 shrink-0 rounded-md flex items-center justify-center font-bold text-sm sm:text-xs ${
                             active && !submitted
                               ? "bg-primary-foreground text-primary"
                               : isCorrect
@@ -231,7 +231,7 @@ function QuizPage() {
                         >
                           {String.fromCharCode(65 + oi)}
                         </span>
-                        <span className="text-sm sm:text-base font-medium flex-1">{opt}</span>
+                        <span className="text-base font-medium flex-1">{opt}</span>
                         {active && !submitted && <Check className="h-4 w-4" />}
                       </button>
                     );
@@ -239,7 +239,7 @@ function QuizPage() {
                 </div>
 
                 {submitted && userChoice !== q.answer && (
-                  <div className="mt-3 text-xs sm:text-sm rounded-lg bg-success/10 text-success px-3 py-2">
+                  <div className="mt-3 text-sm rounded-lg bg-success/10 text-success px-3 py-2">
                     <span className="font-semibold">Correct answer:</span>{" "}
                     {q.options[q.answer]}
                   </div>
@@ -257,7 +257,7 @@ function QuizPage() {
                 setSubmitted(true);
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
-              className="px-8 py-3 rounded-xl bg-hero text-primary-foreground font-bold shadow-glow hover:opacity-95 transition"
+              className="px-8 py-3 rounded-xl bg-hero text-primary-foreground text-lg font-bold shadow-glow hover:opacity-95 transition"
             >
               Submit & See Results
             </button>
