@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useMemo, useState } from "react";
 import { getMcqSetById, listMcqsBySetId } from "@/integrations/firebase/db";
 import { SiteShell } from "@/components/SiteShell";
+import { CircularLoader } from "@/components/ui/circular-loader";
 import { ArrowLeft, Check, RotateCcw, Trophy } from "lucide-react";
 
 export const Route = createFileRoute("/quiz/$setId")({
@@ -53,8 +54,8 @@ function QuizPage() {
   if (isLoading) {
     return (
       <SiteShell>
-        <div className="max-w-3xl mx-auto px-4 py-16">
-          <div className="h-64 rounded-2xl bg-muted animate-pulse" />
+        <div className="max-w-3xl mx-auto px-4 py-16 flex justify-center">
+          <CircularLoader size="lg" />
         </div>
       </SiteShell>
     );

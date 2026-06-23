@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { getCategoryById, listMcqSetIdsForSets, listMcqSetsByCategory } from "@/integrations/firebase/db";
 import { SiteShell } from "@/components/SiteShell";
+import { CircularLoader } from "@/components/ui/circular-loader";
 import { ArrowLeft, ChevronRight, FileQuestion } from "lucide-react";
 
 export const Route = createFileRoute("/category/$categoryId")({
@@ -33,17 +34,15 @@ function CategoryPage() {
         <Link to="/" className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary mb-6">
           <ArrowLeft className="h-4 w-4" /> All categories
         </Link>
-        <h1 className="text-3xl sm:text-4xl font-extrabold">
-          {data?.cat?.name ?? <span className="text-muted-foreground">Loading…</span>}
-        </h1>
+        <h1 className="text-3xl sm:text-4xl font-extrabold">{data?.cat?.name}</h1>
         <p className="text-muted-foreground mt-1">Choose an MCQ set to start practicing.</p>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
-          {isLoading
-            ? Array.from({ length: 4 }).map((_, i) => (
-                <div key={i} className="h-28 rounded-2xl bg-muted animate-pulse" />
-              ))
-            : data?.sets.length === 0 ? (
+          {isLoading ? (
+            <div className="sm:col-span-2 flex justify-center py-16">
+              <CircularLoader size="lg" />
+            </div>
+          ) : data?.sets.length === 0 ? (
               <div className="sm:col-span-2 rounded-2xl border border-dashed p-10 text-center bg-card-grad">
                 <FileQuestion className="h-10 w-10 mx-auto text-muted-foreground mb-3" />
                 <h3 className="font-bold">No sets yet in this category</h3>

@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { listAllMcqSetRefs, listCategories } from "@/integrations/firebase/db";
 import { SiteShell } from "@/components/SiteShell";
+import { CircularLoader } from "@/components/ui/circular-loader";
 import { BookOpen, ChevronRight, Layers, Sparkles } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -59,7 +60,9 @@ function HomePage() {
         </div>
 
         {isLoading ? (
-          <GridSkeleton />
+          <div className="flex justify-center py-20">
+            <CircularLoader size="lg" />
+          </div>
         ) : !categories || categories.length === 0 ? (
           <EmptyState />
         ) : (
@@ -95,16 +98,6 @@ function HomePage() {
         )}
       </section>
     </SiteShell>
-  );
-}
-
-function GridSkeleton() {
-  return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {Array.from({ length: 6 }).map((_, i) => (
-        <div key={i} className="h-40 rounded-2xl bg-muted animate-pulse" />
-      ))}
-    </div>
   );
 }
 

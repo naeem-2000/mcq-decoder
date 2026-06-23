@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "@tanstack/react-router";
-import { GraduationCap, Sparkles } from "lucide-react";
+import { Facebook, GraduationCap, Sparkles } from "lucide-react";
 import { useState, type ReactNode } from "react";
 
 export function SiteShell({ children }: { children: ReactNode }) {
@@ -50,7 +50,7 @@ function SiteFooter() {
 
   return (
     <footer className="mt-12 border-t border-border bg-background/60">
-      <div className="max-w-6xl mx-auto px-4 py-6 text-center">
+      <div className="max-w-6xl mx-auto px-4 py-6 text-center space-y-2">
         <button
           onClick={handleClick}
           className="text-sm text-muted-foreground hover:text-primary transition-colors select-none"
@@ -59,7 +59,26 @@ function SiteFooter() {
         >
           Digital Education Platform • <span className="font-semibold">MCQ Decoder</span>
         </button>
-        <div className="text-[11px] text-muted-foreground/70 mt-1">© {new Date().getFullYear()} • Crafted with care</div>
+        <div className="text-[11px] text-muted-foreground/70">
+          © {new Date().getFullYear()} • Crafted with care
+        </div>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-xs text-muted-foreground">
+          <span>
+            Developed by{" "}
+            <span className="font-medium text-foreground/80">Naeem</span>
+          </span>
+          <span className="hidden sm:inline text-muted-foreground/40">•</span>
+          <a
+            href="https://www.facebook.com/AreFin1Naeem"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 font-medium text-muted-foreground hover:text-primary transition-colors"
+            aria-label="Naeem on Facebook"
+          >
+            <Facebook className="h-3.5 w-3.5" />
+            Connect on Facebook
+          </a>
+        </div>
       </div>
     </footer>
   );
