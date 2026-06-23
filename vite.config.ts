@@ -12,4 +12,8 @@ export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
   },
+  // Required for Vercel (and other non-Cloudflare) deploys — builds a `.output` bundle Nitro can serve.
+  nitro: {
+    preset: "vercel",
+  },
 });
